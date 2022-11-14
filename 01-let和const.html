@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  {
+    // let a = 1;
+    // var b = 2;
+  }
+  // console.log(a);
+  // console.log(b);
+  // for (var i = 0; i < 6; i++) {
+  //     setTimeout(() => {
+  //         console.log(i);
+  //     }, 0)
+  // }
+
+  // for (let i = 0;i < 5;i ++) {
+  //     let i = 'a'
+  //     console.log(i);
+  // }
+
+  //变量提升
+  // console.log(foo2);
+  //   var foo2 = "b";
+  // console.log(foo1);
+  // let foo1 = 'a'
+
+  //暂时性死区
+  //   var tmp = 123;
+  if (true) {
+    // tmp = 'abc' //报错
+    // let tmp
+    // console.log(typeof x)  //报错
+    // let x
+    // console.log(typeof b); //undefined
+  }
+  //   function bar(x = y, y = 2) {
+  //     return [x, y];
+  //   }
+  //   bar(); //报错
+
+  //   var x = x; //不报错
+  //   let y = y; //报错
+
+  //不允许重复声明
+
+  //   function func1() {
+  //     var a = 1
+  //     let a = 2
+  //   }
+  //   func1() //报错
+
+  //   function func2(arg) {
+  //     let arg
+  //   }
+  //   func2() //报错
+
+  // 块级作用域
+  //   var tmp = new Date();
+  //   function f() {
+  //     console.log(tmp); //undefined
+  //     if (false) {
+  //       var tmp = 1;
+  //     }
+  //   }
+  //   f();
+  //   var s = "hello";
+  //   for (var i = 0; i < s.length; i++) {
+  //     console.log(s[i]);
+  //   }
+  //   console.log(i); // 5
+  //   function f1() {
+  //     let n = 5
+  //     if (true) {
+  //         let n = 10
+  //     }
+  //     console.log(n); //5
+  //   }
+  //   f1()
+  //   {
+  //     {
+  //       {
+  //         {
+  //           {
+  //             let insane = "Hello World";
+  //           }
+  //           console.log(insane); // 报错
+  //         }
+  //       }
+  //     }
+  //   }
+  //   {
+  //     {
+  //       {
+  //         {
+  //           let insane = "Hello World";
+  //           {
+  //             let insane = "Hello World1";
+  //           }
+  //           console.log(insane);
+  //         }
+  //       }
+  //     }
+  //   }
+
+  //   块级作用域与函数声明
+  //   if (true) {
+  //     function a() {
+  //         console.log('a');
+  //     }
+  //     a()
+  //   }
+  //   a()
+  //   function a() {
+  //     console.log("a");
+  //   }
+  //   a();
+  //   function b() {
+  //     console.log("b-out");
+  //   }
+  //   (function () {
+  //     // b = 'asd'
+  //     if (false) {
+  //       function b() {
+  //         console.log("b");
+  //       }
+  //     }
+  //     // console.log(b); //undefined
+  //     b();
+  //   })();
+
+  //   {
+  //     let a = 1
+  //     function b() {
+  //         console.log(a);
+  //     }
+  //     b()
+  //   }
+  //   if (true) let a = 1 // 报错
+
+  //   function a() {
+  //     console.log("a");
+  //   }
+  //   var a = 1;
+  //   console.log(a);
+
+  // const
+  //   var a = 1;
+  //   const a = 2; //报错
+  //   console.log(a);
+
+  //   const arr = [];
+  //   arr.push(1);
+  //   console.log(arr);
+  //   const arr = Object.freeze([]); //冻结
+  //   console.log(arr);
+  //   arr.push(1); //报错
+  //   const obj = Object.freeze({ a: 1, b: { c: 2 } });
+  //   obj.a = 2;
+  //   obj.b.c = 3;
+  //   console.log(obj);
+  //   const obj = {
+  //     a: 1,
+  //     b: {
+  //       c: 2,
+  //     },
+  //   };
+  //   Object.freeze(obj);
+  //   obj.a = 2;
+  //   Object.freeze(obj.b);
+  //   obj.b.c = 3;
+
+  //顶层属性
+  //   a = 2;
+  //   console.log(window.a); //2
+  //   window.b = 3;
+  //   console.log(b); //3
+  //   var a = 2;
+  //   console.log(window.a);
+  //   let b = 3
+  //   console.log(window.b);
+
+  //   console.log(this);
+
+  //获取顶层对象
+  // 方法一
+  typeof window !== "undefined"
+    ? window
+    : typeof process === "object" &&
+      typeof require === "function" &&
+      typeof global === "object"
+    ? global
+    : this;
+
+  // 方法二
+  var getGlobal = function () {
+    if (typeof self !== "undefined") {
+      return self;
+    }
+    if (typeof window !== "undefined") {
+      return window;
+    }
+    if (typeof global !== "undefined") {
+      return global;
+    }
+    throw new Error("unable to locate global object");
+  };
+  new Function("return this")();
+</script>
