@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  //1、数组的解构赋值
+  // let [a, b, c] = [1, 2, 3];
+  // console.log(a, b, c);
+  // let [bar, ...foo] = [2, 3, 4, 5];
+  // console.log(bar, foo);
+  // let {a} = {}
+  // console.log(a);
+  // let [a, b, c] = new Set(['a', 'b', 'c'])
+  // console.log(a,b,c);
+  //默认值
+  // let [ foo = true] = []
+  // console.log(foo); //true
+  // let [x, y = 'b'] = ['a']
+  // console.log(x, y);  //a, b
+  // let [a, b = 'b'] = ['a', undefined]
+  // console.log(a, b);  //a, b
+  // let [x = 1] = [null]
+  // console.log(x);  // null
+  // let [y = 1] = [undefined]
+  // console.log(y);  // 1
+  // function f() {
+  //   console.log('aaa');
+  // }
+  // let [x = f()] = []
+  // console.log(x);
+
+  //2、对象的解构赋值
+  // let {foo, bar} = {foo: 'aaa', bar: 'bbb'}
+  // console.log(foo);
+  // console.log(bar);
+  // let {baz} = {foo: 'aaa', bar: 'bbb'}
+  // console.log(baz); //undefined
+  // let { log, sin, cos } = Math
+  // let { log } = console
+  // log(1)
+  // const obj = {
+  //   name: 'li',
+  //   age: 3
+  // }
+  // const {name: n, age: a} = obj
+  // console.log(n, a); //li 3
+  // const obj = {
+  //   p: [
+  //     'hello',
+  //     {
+  //       y: 'world'
+  //     }
+  //   ]
+  // }
+  // const { p: [x, { y }], p } = obj
+  // console.log(x, y);
+  // console.log(p);
+  // const node = {
+  //   loc: {
+  //     start: {
+  //       line: 1,
+  //       column: 5,
+  //     },
+  //   },
+  // };
+  // const { loc, loc: { start }, loc: { start: { line } } } = node
+  // console.log(loc, start, line);
+  // const obj = {}, arr = [];
+  // ({ foo: obj.prop, bar: arr[0] } = { foo: 'aaa', bar: 'zzz' });
+  // console.log(obj, arr);
+  // ({ a, b } = { a: 1, b: '2' })
+  // a = 2
+  // console.log(a, b);
+  // const obj1 = {};
+  // const obj2 = { a: 1 };
+  // Object.setPrototypeOf(obj1, obj2);
+  // console.log(obj1);
+  // //可以解构获得继承的属性
+  // const { a } = obj1;
+  // console.log(a);
+  //默认值
+  // let { x = 3 } = {}
+  // console.log(x);
+  // const { x: y = 3 } = {}
+  // console.log(y);
+  // let x;
+  // ({ x } = { x: 3 });
+  // console.log(x);
+  // ({} = 'abc')
+  // const arr = ['a', 'b', 'c'];
+  // //将数组当作对象解构
+  // const {0: a, 1: b, 2: c} = arr
+  // console.log(a, b, c);
+
+  //3、字符串的解构赋值
+  // const str = 'hello'
+  // // const [a, b, c, d, e] = str
+  // const { length, 0: a, 1: b, 2: c, 3:d, 4: e } = str
+  // console.log(a, b, c, d, e);
+  // console.log(length);
+
+  //4、数值和布尔值的解构赋值
+  //解构赋值时，如果等号右边是数值和布尔值，则会先转为对象。
+  // const { toString: s } = 123
+  // const obj = new Object(123)
+  // console.log(obj);
+  // const { toString: t } = true
+  // console.log(t === Boolean.prototype.toString) //true
+  // const obj = new Object(undefined) //{}
+  // const obj = new Object(null) //{}
+  // const { toString: s } = undefined
+  // console.log(s); //报错
+
+  //5、参数的解构赋值
+  // function add([x, y]) {
+  //   return x + y
+  // }
+  // console.log(add([1, 2]));
+  // const arr = [[1, 2], [3, 4]].map(([a, b]) => a + b)
+  // console.log(arr); // [3, 7]
+  // function move({ x = 10, y = 20 } = {}) {
+  //   return [x, y]
+  // }
+  // console.log(move()); // [10, 20]
+  // console.log(move({ x: 1, y: 2 })); // [1, 2]
+  // console.log(move({ x: 1 })); // [1, 20]
+  // function move({ x, y } = { x: 0, y: 0 }) {
+  //   return [x, y]
+  // }
+  // console.log(move()); //[0, 0]
+  // console.log(move({ x: 1, y: 2 })); // [1, 2]
+  // console.log(move({ x: 1 })); // [1, undefined]
+  // console.log([1, undefined, 2].map((res = 66) => res)); //[1, 66, 2]
+
+  //6、圆括号的问题
+  // let [a] = [1]
+  // console.log(a);
+  // let { x: (a) } = {} 报错
+  // [(a)] = [1]
+  // console.log(a);
+  // ({ x: (x) } = { x: 1 }); //不报错
+  // ({ (x) } = { x: 1 }); //报错
+
+  //7、用途
+  //交换变量
+  // let x = 1;
+  // let y = 2;
+  // [x, y] = [y, x];
+  // console.log(x, y);
+
+  // //从函数返回多个值
+  // // 返回一个数组
+  // function example() {
+  //   return [1, 2, 3];
+  // }
+  // let [a, b, c] = example();
+  // // 返回一个对象
+  // function example() {
+  //   return {
+  //     foo: 1,
+  //     bar: 2,
+  //   };
+  // }
+  // let { foo, bar } = example();
+
+  // //函数参数的定义
+  // // 参数是一组有次序的值
+  // function f([x, y, z]) {}
+  // f([1, 2, 3]);
+  // // 参数是一组无次序的值
+  // function f({ x, y, z }) {}
+  // f({ z: 3, y: 2, x: 1 });
+
+  //提取 JSON 数据
+  // const obj = {
+  //   id: 42,
+  //   status: 'OK',
+  //   data: [2, 2]
+  // }
+  // const { id, status, data: number } = obj
+
+  //函数参数的默认值
+
+  //遍历Map结构
+  // const map = new Map()
+  // map.set(1, 'hello')
+  // map.set('second', 'world');
+  // console.log(map);
+  // for (const [key, value] of map) {
+  //   console.log(key, value);
+  // }
+
+  //输入模块的指定方法
+
+
+</script>
+
