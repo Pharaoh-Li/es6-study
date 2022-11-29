@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  //1、字符的Unicode表示法
+  //   console.log('\u0061'); //a
+  //   console.log("\uD842\uDFB7");
+  //   console.log("\u20BB7");
+  //   console.log("\u{20BB7}");
+
+  //2、字符串的遍历器接口
+  //   for (let item of 'abc') {
+  //     console.log(item);
+  //   }
+
+  //3、直接输入 U+2028 和 U+2029
+  //   console.log('a\u2028a');
+
+  //4、JSON.stringify() 的改造
+
+  //5、模板字符串
+  //   console.log(`a\`\'`);
+
+  //6、实例：模板编译
+
+  //7、标签模板
+  //   alert`asd`
+  //   alert('asd')
+  //   function safeHtml(template) {
+  //     let s = ''
+  //     for (let i = 0;i < template.length;i ++) {
+  //         let arg = String(template[i])
+  //         s += arg.replace(/&/g, '&amp;')
+  //                 .replace(/</g, '&lt;')
+  //                 .replace(/>/g, '&gt;');
+  //     }
+  //     return s
+  //   };
+  //   const msg1 = '<script>alert("abc")</';
+  //   const msg2 = 'script>';
+  //   const msg = msg1 + msg2;
+  //   const div = document.createElement('div')
+  //   div.innerHTML = safeHtml(msg)
+  //   document.body.appendChild(div)
+
+  //8、模板字符串的限制
+  
+
+</script>

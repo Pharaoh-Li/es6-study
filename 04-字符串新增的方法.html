@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //1、fromCodePoint
+    // console.log(String.fromCodePoint(0x20BB7));
+    // console.log(String.fromCharCode(0x20BB7));
+
+    //2、String.raw
+    // console.log(String.raw`Hi\n${2+3}!`);
+    // console.log(String.raw`Hi\u000A!`);
+    // console.log(String.raw`Hi\\n`);
+    // console.log(String.raw`Hi\\n` === "Hi\\\\n");
+    // console.log(String.raw({
+    //     raw: ['a', 'b', 'c', 'd', 'e']
+    // }, ...[1, 2, 3, 4]));
+
+    //3、codePointAt
+    //和fromCodePoint对应
+
+    //4、normalize
+
+    //5、实例方法：includes(), startsWith(), endsWith()
+    // let s = 'Hello World!'
+    // console.log(s.includes('l')); //true
+    // console.log(s.startsWith('Hello')); //true
+    // console.log(s.endsWith('d!')); //true
+    // console.log(s.includes('H', 1)); //false
+    // console.log(s.startsWith('Wor', 6)); //true
+    // console.log(s.endsWith('!', 12)); //true
+
+    //6、实例方法：repeat()
+    // console.log('abc'.repeat(2)); //abcabc
+    // console.log('abc'.repeat(1.9)); //abc
+
+    //7、实例方法：padStart()，padEnd()
+    //padStart 头部补全
+    // const str = 'abc'
+    // console.log(str.padStart(10, 1)); // '1111111abc'
+    // console.log(str.padStart(10));  // '       abc'
+    // console.log(str.padStart());  // 'abc'
+    // console.log(str.padStart(2)); // 'abc'
+    // console.log(str.padStart(5, 'abcdefg')); // 'ababc'
+    //padEnd 尾部补全
+    // const str = 'xyz'
+    // console.log(str.padEnd()); // 'xyz'
+    // console.log(str.padEnd(10)); // 'xyz       '
+    // console.log(str.padEnd(7, 'abc')); // 'xyzabca'
+    // console.log(str.padEnd(2, 'abc')); // 'xyz'
+    // console.log('1'.padStart(10, '0')); // '0000000001'
+    // console.log('12'.padStart(10, 'YYYY-MM-DD')); // 'YYYY-MM-12'
+    
+    //8、实例方法：trimStart()，trimEnd()
+    // const str = '    abc     ' 
+    // console.log(str.trim()); // 'abc'
+    // console.log(str.trimStart()); // 'abc     '
+    // console.log(str.trimEnd()); // '    abc'
+    // console.log(str.trimLeft()); // 'abc     '
+    // console.log(str.trimRight()); // '    abc'
+
+    //9、实例方法：matchAll()
+
+    //10、实例方法：replaceAll()
+    // const str = 'aabbcc'
+    // console.log(str.replace('b', '-')); // 'aa-bcc'
+    // console.log(str.replace(/b/g, '-')); // 'aa--cc'
+    // console.log(str.replaceAll('b', '*')); // 'aa**cc'
+    // console.log(str.replaceAll(/b/, '-')); // 报错
+    // console.log(str.replaceAll('b', `$$`)); // 'aa$$cc'
+    // console.log(str.replaceAll('b', `$`)); // 'aa$$cc'
+    // console.log(str.replaceAll('b', `$&`)); // 'aabbcc' $&：匹配的字符串。
+    // console.log(str.replaceAll('b', '$`')); // 'aaaaaabcc' $` ：匹配结果前面的文本。
+    // console.log(str.replaceAll('b', `$'`)) // 'aabcccccc'  $'：匹配结果后面的文本。
+    // console.log(str.replaceAll(/(ab)(bc)/g, '$2$1')); // 'abcabc' $n：匹配成功的第n组内容，n是从1开始的自然数。这个参数生效的前提是，第一个参数必须是正则表达式。
+    // console.log(str.replaceAll('b', (x) => x + '1')); // 'aab1b1cc'
+
+    //11、实例方法：at()
+    // const str = '01234567'
+    // console.log(str.at(7)); //7
+    // console.log(str.at(-8)); // 0
+    // console.log(str.at(0)); //0
+    // console.log(str.at(-1)); //7
+
+
+
+</script>
