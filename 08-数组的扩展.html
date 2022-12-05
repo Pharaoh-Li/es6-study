@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </body>
+</html>
+<script>
+  //1-扩展运算符
+  // console.log(...[1,2,3]);
+  //替代函数apply
+  //es5
+  // function f(x, y, z) {
+  //     console.log(x, y, z);
+  // }
+  // const arg = [1, 2, 3]
+  // f.apply(null, arg)
+  //es6
+  //   function f(x, y, z) {
+  //     console.log(x, y, z);
+  //   }
+  //   const arg = [1, 2, 3];
+  //   f(...arg);
+
+  //   // ES5 的写法
+  //   Math.max.apply(null, [14, 3, 77]);
+  //   // ES6 的写法
+  //   Math.max(...[14, 3, 77]);
+  //   // 等同于
+  //   Math.max(14, 3, 77);
+
+  // ES5 的写法
+  //   var arr1 = [0, 1, 2];
+  //   var arr2 = [3, 4, 5];
+  //   Array.prototype.push.apply(arr1, arr2);
+  // ES6 的写法
+  //   let arr1 = [0, 1, 2];
+  //   let arr2 = [3, 4, 5];
+  //   arr1.push(...arr2);
+  //   console.log(arr1);
+
+  // ES5
+  //   console.log(new (Date.bind.apply(Date, [null, 2015, 1, 1]))());
+  //   // ES6
+  //   console.log(new Date(...[2015, 1, 1]));
+
+  //复制数组
+  //   const a1 = [1, 2];
+  //   const a2 = a1.concat()
+  //   console.log(a2);
+  //   const a3 = [...a1]
+  //   a3[0] = 4
+  //   console.log(a1);
+
+  //合并数组
+  // const arr1 = [1,2,3]
+  // const arr2 = [4, 5, 6]
+  // const arr3 = arr1.concat(arr2)
+  // const arr4 = [...arr1, ...arr2]
+  // console.log(arr3);
+  // console.log(arr4);
+  //   const a1 = [{ foo: 1 }];
+  //   const a2 = [{ bar: 2 }];
+  //   const a3 = a1.concat(a2)
+  //   const a4 = [...a1, ...a2]
+  //   a1[0].foo = 2
+  //   console.log(a3); //foo:2
+  //   console.log(a4); //foo:2
+  //   console.log(a3[0] === a1[0]); //true
+
+  //字符串
+  // console.log([...'abcd']);
+
+  //iterator遍历器
+  // Number.prototype[Symbol.iterator] = function* () {
+  //   let i = 0
+  //   let num = this.valueOf()
+  //   while(i < num) {
+  //     yield i++
+  //   }
+  // }
+  // console.log([...5]); // [0, 1, 2, 3, 4]
+
+  //Map 和 Set 结构，Generator 函数
+  // const map = new Map([
+  //   ['a', 1],
+  //   ['b', 2],
+  //   ['c', 3],
+  // ])
+  // console.log(map);
+  // console.log(...map);
+  // const go = function* () {
+  //   yield 1;
+  //   yield 2;
+  //   yield 3;
+  //   yield 4;
+  // };
+  // console.log(go());
+  // console.log([...go()]) // [1, 2, 3]
+
+  //2、Array.from
+  //Array.from()方法用于将两类对象转为真正的数组：类似数组的对象（array-like object）和可遍历（iterable）的对象（包括 ES6 新增的数据结构 Set 和 Map）。
+  // const arrayLik = {
+  //   '0': 'a',
+  //   '1': 'b',
+  //   '2': 'c',
+  //   length: 3
+  // }
+  // var arr1 = [].slice.call(arrayLik)
+  // console.log(arr1);
+  // const arr = Array.from(arrayLik)
+  // console.log(arr);
+  // const divs = document.querySelectorAll('div')
+  // const divArray = Array.from(divs)
+  // console.log(divArray);
+  // console.log(Array.from('hello'));
+  // console.log(Array.from(new Set(['a', 'b'])));
+  // console.log(Array.from([1,2,3]));
+  //任何有length属性的对象，都可以通过Array.from()方法转为数组，而此时扩展运算符就无法转换。
+  //扩展运算符背后调用的是遍历器接口（Symbol.iterator）
+  // console.log([...'123']);
+  // console.log(Array.from('123'));
+  // console.log(Array.from({length: 3}));
+  // console.log(Array.from('123', x => x * x));
+  // console.log(Array.from({'0': 'a', '1': 'b', '2': 'c', length: 3}, x => x + 'a'));
+  //如果map()函数里面用到了this关键字，还可以传入Array.from()的第三个参数，用来绑定this。
+
+  //3、Array.of()
+  //Array.of()方法用于将一组值，转换为数组。
+  // console.log(Array.of(1,2,3,4));
+  // console.log(Array.of());
+  // console.log(Array());
+  // console.log(Array(3));
+  // console.log(Array(3,2,1));
+  // console.log(Array.of([1,23], undefined));
+  // //模拟Array.of()
+  // function ArrayOf() {
+  //   return [].slice.call(arguments)
+  // }
+  // console.log(ArrayOf(1,2,3));
+
+  //4、实例方法：copyWithin()
+  // const arr = [1, 2, 3, 4, 5, 6];
+  // const newArr = arr.copyWithin(0, 2, 6) //返回修改后的原数组
+  // arr.push(7)
+  // console.log(arr);
+  // console.log(newArr);
+  // console.log(arr.copyWithin(3));
+  // console.log(arr.copyWithin(0,-2,-1));
+  // console.log(Array.from({length: 5, 3: 1}).copyWithin(0, 3)); //[1, undefined, undefined, 1, undefined]
+  // console.log([].copyWithin.call({length: 5, 3: 1}, 0, 3)); //{0: 1, 3: 1, length: 5}
+  // const i32arr = new Int32Array([1,2,3,4])
+  // console.log(i32arr);
+
+  //5、实例方法：find()，findIndex()，findLast()，findLastIndex()
+  // const arr = [
+  //   {
+  //     id: 1,
+  //     name: '1'
+  //   },
+  //   {
+  //     id: 2,
+  //     name: '2'
+  //   },
+  //   {
+  //     id: 1,
+  //     name: '3'
+  //   },
+  // ]
+  //find 返回第一个符合的元素，没有则返回undefined
+  // const a = arr.find(item => {
+  //   console.log(item.id);
+  //   return item.id === 1
+  // })
+  // console.log(a);
+  //findLast 返回最后一个符合的元素，没有则返回undefined
+  // const b = arr.findLast(item => {
+  //   console.log(item.id);
+  //   return item.id === 1
+  // })
+  // console.log(b);
+  //findIndex  返回第一个符合的元素的索引，没有则返回-1
+  // const index1 = arr.findIndex(item => item.id === 2)
+  // console.log(index1);
+  //findLastIndex  返回最后一个符合的元素的索引，没有则返回-1
+  // const index2 = arr.findLastIndex(item => item.id === 1)
+  // console.log(index2);
+  // console.log([NaN].indexOf(NaN)); // -1识别不了
+  // console.log(['a', 'b', 'c'].indexOf('b'));
+  // const arr = [NaN, 123 ,'12e']
+  // // console.log(arr.indexOf(NaN)); //-1
+  // console.log(arr.findIndex(item => Object.is(NaN, item))); //0
+
+  //6、实例方法：fill()
+  // const obj = {name: 1}
+  // const arr = new Array(3).fill(obj, 0, 1)
+  // obj.id = 2
+  // console.log(arr);
+
+  //7、实例方法：entries()，keys() 和 values()
+  // const arr = [12, 'asd', 456]
+  // const keys = arr.keys()
+  // const values = arr.values()
+  // const entries = arr.entries()
+  // for (const key of keys) {
+  //   console.log(key);
+  // }
+  // for (const value of values) {
+  //   console.log(value);
+  // }
+  // for (const e of entries) {
+  //   console.log(e);
+  // }
+  // console.log(entries.next().value); //[0, 12]
+  // console.log(entries.next().value); //[1, 'asd']
+  // console.log(entries.next().value); //[2, 456]
+
+  //8、实例方法：includes()
+  // const arr = [1,2,3,4, NaN]
+  // console.log(arr.includes(1)); // true
+  // console.log(arr.includes(NaN)); // true
+  // console.log(arr.includes(0)); // false
+  // console.log(arr.includes(1,3)); // false
+  // console.log(arr.includes(1, -5)); // true
+
+  //9、实例方法：flat()，flatMap()
+  // const arr = [[1, , 2, [3]], 4, 5, [6], 7]
+  // console.log(arr.flat(Infinity));
+  // console.log(arr.flatMap(v => {
+  //   return v
+  // }));
+
+  //10、实例方法：at()
+  //支持负索引
+  // const arr = [5, 12, 8, 130, 44];
+  // console.log(arr.at(-1)); //44
+  // console.log(arr.at(0)); //5
+  // console.log(arr[0]); //5
+
+  //提案，还不能用
+  // 11、实例方法：toReversed()，toSorted()，toSpliced()，with()
+  // const arr = [1,2,3,4,5];
+  // arr.reverse()
+  // console.log(arr); //[5,4,3,2,1] 改变原数组
+  // console.log(Array.prototype);
+  // arr.toReversed()
+  // console.log(arr);
+  // const arr1 = [3,1,2]
+  // arr1.sort()
+  // console.log(arr1); // [1,2,3]
+  // arr1.toSorted()
+  // console.log(arr1);
+
+  //提案
+  //12、实例方法：group()，groupToMap()
+  // const array = [1, 2, 3, 4, 5];
+  // array.group((num, index, array) => {
+  //   return num % 2 === 0 ? 'even': 'odd';
+  // });
+  // { odd: [1, 3, 5], even: [2, 4] }
+  //手写group
+  // Array.prototype.group = function(fn, thisArgs) {
+  //   if (typeof fn !== 'function') {
+  //     throw new Error(fn + 'is not function')
+  //   }
+  //   let self = this
+  //   const obj = {}
+  //   for (let i = 0; i < self.length; i++) {
+  //     const temp = fn.call(thisArgs, self[i], i, self)
+  //     if (!obj[temp]) {
+  //       obj[temp] = [self[i]]
+  //     } else {
+  //       obj[temp].push(self[i])
+  //     }
+  //   }
+  //   return obj
+  // }
+  // const arr = [1, 2, 3, 4, 5];
+  // const newArr = arr.group((num, index, array) => {
+  //   return num % 2 === 0 ? 'even': 'odd';
+  // })
+  // console.log(newArr);
+  // const array = [1, 2, 3, 4, 5];
+  // const odd = { odd: true };
+  // const even = { even: true };
+  // array.groupToMap((num, index, array) => {
+  //   return num % 2 === 0 ? even : odd;
+  // });
+  //  Map { {odd: true}: [1, 3, 5], {even: true}: [2, 4] }
+  //手写groupToMap
+  // Array.prototype.groupToMap = function(fn, thisArgs) {
+  //   if (typeof fn !== 'function') {
+  //     throw new Error(fn + 'is not function')
+  //   }
+  //   let self = this
+  //   const map = new Map()
+  //   for (let i = 0;i < self.length;i ++) {
+  //     const temp = fn.call(thisArgs, self[i], i, self)
+  //     if (!map.has(temp)) {
+  //       map.set(temp, [self[i]])
+  //     } else {
+  //       map.get(temp).push(self[i])
+  //     }
+  //   }
+  //   return map
+  // }
+  // const arr = [1,2,3,4,5,2.1]
+  // const odd  = { odd: true };
+  // const even = { even: true };
+  // const newMap = arr.groupToMap((num, index, array) => {
+  //   return num % 2 === 0 ? even : odd;
+  // })
+  // console.log(newMap);
+
+  //13、数组的空位
+  // const arr1 = [,,,]
+  // const arr2 = [undefined, undefined, undefined]
+  // console.log(0 in arr1); //false
+  // console.log(0 in arr2); //true
+  // arr1.map(item => {
+  //   console.log(item); //空位不循环
+  // })
+  // arr2.map(item => {
+  //   console.log(item);
+  // })
+  //由于空位的处理规则非常不统一，所以建议避免出现空位。
+
+  //14、Array.prototype.sort() 的排序稳定性 
+  //排序稳定性（stable sorting）是排序算法的重要属性，指的是排序关键字相同的项目，排序前后的顺序不变。
+
+  
+
+</script>
