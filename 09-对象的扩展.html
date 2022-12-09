@@ -12,6 +12,87 @@
 <script src="./test.js"></script>
 <script>
     //1、属性的简洁表示法
+    // const obj = {
+    //     f() {
+    //         console.log(this);
+    //     }
+    // }
+    // obj.f()
+
+    //2、属性名表达式
+    // const obj = {}
+    // obj.foo = true;
+    // obj['a' + 'bc'] = 'abc'
+    // console.log(obj);
+
+    // const lastWord = 'last word'
+    // const obj = {
+    //     'first word': 'hello',
+    //     [lastWord]: 'word',
+    //     ['he' + 'llo'] () {
+    //         console.log('hello');
+    //     }
+    // }
+    // console.log(obj['first word']);
+    // console.log(obj['last word']);
+    // console.log(obj[lastWord]);
+    // obj.hello()
+    
+    // const foo = 'bar'
+    // const obj = {[foo]:foo}
+    // console.log(obj);
+
+    // const obj = { name: '1' }
+    // const obj2 = { name: '1' }
+    // const a = { [obj]: 1, [obj2]: 2 }
+    // console.log(a); //{[object Object]: 2}
+
+    //3、方法的 name 属性
+    // const person = {
+    //     sayName() {
+    //         console.log('hello');
+    //     },
+    //     a: function www() {
+    //         console.log('asd');
+    //     }
+    // }
+    // function abc() {
+    //     console.log('hello');
+    // }
+    // console.log(person.sayName.name); //sayName
+    // console.log(person.a.name); //www
+    // console.log(abc.name); //abc
+
+    // const obj = {
+    //     get foo() {},
+    //     set foo(x) {},
+    // }
+    // console.log(obj.foo); //undefined
+    // const descriptor = Object.getOwnPropertyDescriptor(obj, 'foo')
+    // console.log(descriptor);
+    // console.log(descriptor.get.name); // get foo
+    // console.log(descriptor.set.name); // set foo
+    // console.log((new Function()).name); //anonymous
+    // const doSomething = function() {
+    //     console.log('doSomething ---');
+    // }
+    // console.log(doSomething.bind().name); // bound doSomething
+    // const key1 = Symbol('this is key1')
+    // const key2 = Symbol('')
+    // const obj = {
+    //     [key1] () {},
+    //     [key2] () {},
+    // }
+    // console.log(obj[key1].name); //[this is key1]
+    // console.log(obj[key2].name); //[]
+
+    //4、属性的可枚举性和遍历
+    //可枚举性
+    // const obj = { foo: '123' }
+    // const des = Object.getOwnPropertyDescriptor(obj, 'foo')
+    // console.log(des);
+
+
 
 </script>
 </html>
